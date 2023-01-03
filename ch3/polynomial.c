@@ -40,7 +40,7 @@ void print_poly(polynomial p) {
 	printf("%3.1f \n", p.coef[p.degree]);
 }
 
-int main(void)
+int main2(void)
 {
 	polynomial a = { 5, {3,6,0,0,0,10} };
 	polynomial b = { 4, {7,0,5,0,1} };

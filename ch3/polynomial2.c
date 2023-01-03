@@ -65,7 +65,7 @@ void print_poly2(int s, int e) {
 	printf("%3.1fx^%d + ", terms[e].coef, terms[e].expon);
 }
 
-int main_2(void) {
+int main(void) {
 	int As = 0, Ae = 2, Bs = 3, Be = 5, Cs, Ce;
 	poly_add2(As, Ae, Bs, Be, &Cs, &Ce);
 	print_poly2(As, Ae);

@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{df17ee74-58c7-46df-98b8-3b1951167a4f}</ProjectGuid>
-    <RootNamespace>ch3</RootNamespace>
+    <ProjectGuid>{d00d3c0f-f2a3-4fc4-8aa9-fd35e2830674}</ProjectGuid>
+    <RootNamespace>ch3pointer</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>ch3_array</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -128,8 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="polynomial.c" />
-    <ClCompile Include="polynomial2.c" />
+    <ClCompile Include="mallocex.c" />
+    <ClCompile Include="mallocex2.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
