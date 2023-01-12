@@ -1,10 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-
 #define MAX_STACK_SIZE 100
 
-typedef int element;
+typedef char element;
 typedef struct {
 	element data[MAX_STACK_SIZE];
 	int top;
@@ -54,19 +52,20 @@ element peek(StackType *s)
 	else return s->data[s->top];
 }
 
-int main(void)
+int main3(void)
 {
 	StackType s; // 스택을 정적으로 생성
 	//s = (StackType*)malloc(sizeof(StackType)); -> 스택 동적 생성
 
 	init_stack(&s);
-	push(&s, 1);
-	push(&s, 2);
-	push(&s, 3);
-	printf("%d \n", pop(&s));
-	printf("%d \n", pop(&s));
-	printf("%d \n", pop(&s));
+	push(&s, 'a');
+	push(&s, 'b');
+	push(&s, 'c');
+	printf("%c \n", pop(&s));
+	printf("%c \n", pop(&s));
+	printf("%c \n", pop(&s));
 
 	// free(s);
 	return 0;
 }
+

@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{265875c9-cd44-41ed-9093-03e281226f59}</ProjectGuid>
-    <RootNamespace>ch4array</RootNamespace>
+    <ProjectGuid>{0aaa70b5-5400-4c33-8b67-0de010144f2b}</ProjectGuid>
+    <RootNamespace>ch4maze</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>ch4</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -128,12 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="checkBracket.c" />
-    <ClCompile Include="DynamicArrStack.c" />
-    <ClCompile Include="infix.c" />
-    <ClCompile Include="postfix.c" />
-    <ClCompile Include="stacktype.c" />
-    <ClCompile Include="stack_struct_global.c" />
+    <ClCompile Include="..\ch4_array\maze.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

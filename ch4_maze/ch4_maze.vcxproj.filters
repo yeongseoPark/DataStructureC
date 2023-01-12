@@ -15,22 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stack_struct_global.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="stacktype.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DynamicArrStack.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="checkBracket.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="postfix.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="infix.c">
+    <ClCompile Include="..\ch4_array\maze.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
