@@ -101,11 +101,17 @@ int main(void) {
 	init_stack(&s);
 	here = entry;
 
+	element road[MAX_STACK_SIZE] = {0, };
+
+	int i = 1;
 	while (maze[here.r][here.c] != 'x')
 	{
 		r = here.r;
 		c = here.c;
 		maze[r][c] = '.';
+
+		road[i].r = r;
+		road[i++].c = c;
 		
 		maze_print(maze);
 
@@ -121,6 +127,11 @@ int main(void) {
 		else {
 			here = pop(&s);
 		}
+	}
+
+	/* 지나온 경로 출력 */
+	for (int j = 1; j < i; j++) {
+		printf("경로 : { %d , %d } \n", road[j].r, road[j].c);
 	}
 
 	printf("success");

@@ -131,7 +131,10 @@
     <ClCompile Include="checkBracket.c" />
     <ClCompile Include="DynamicArrStack.c" />
     <ClCompile Include="infix.c" />
+    <ClCompile Include="palindrome.c" />
     <ClCompile Include="postfix.c" />
+    <ClCompile Include="removeRepeat.c" />
+    <ClCompile Include="runlength.c" />
     <ClCompile Include="stacktype.c" />
     <ClCompile Include="stack_struct_global.c" />
   </ItemGroup>

@@ -33,5 +33,14 @@
     <ClCompile Include="infix.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="runlength.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="removeRepeat.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="palindrome.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
