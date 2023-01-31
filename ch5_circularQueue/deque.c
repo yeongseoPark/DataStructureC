@@ -122,20 +122,41 @@ element get_rear(DequeType* q)
 	return q->data[q->rear];
 }
 
+int palindrome(char i[], int len)
+{
+	int start = 0;
+	len--;
+	
+	while (start < len) {
+		char first_half = i[start++];
+		char last_half = i[len--];
+
+		if (first_half != last_half) return 0;
+	}
+
+	return 1;
+}
+
 int main(void)
 {
 	DequeType dq;
 
 	init_deque(&dq);
 
-	for (int i = 0; i < 3; i++) {
-		add_front(&dq, i);
-		dequeue_print(&dq);
-	}
+	char buf[] = "radar"; // String literal 초기화, 자동적으로 /0 추가된 널 종단문자 됨
 
-	for (int i = 0; i < 3; i++) {
-		delete_rear(&dq);
-		dequeue_print(&dq);
+	/* char buf[] = {'r','a','d','a','r'}; 로 초기화할시, /0가 추가되지 않는 배열 초기화이기에
+	  strlen 사용시 잘못된 값
+	  이경우 sizeof(buf)/sizeof(buf[0]);로 길이 계산(함수에 매개변수로 넘기기 전에)
+	*/
+
+	int len = strlen(buf);
+
+	if (palindrome(buf, len)) {
+		printf("palindrome!");
+	}
+	else {
+		printf("not!");
 	}
 
 	return 0;

@@ -15,13 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\ch5\CircularQueue.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="deque.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StackQueue.c">
+    <ClCompile Include="..\ch5_circularQueue\Banking.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

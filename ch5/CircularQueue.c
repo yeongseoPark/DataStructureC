@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX_QUEUE_SIZE 5
+#define MAX_QUEUE_SIZE 20
 
 typedef int element;
 typedef struct {
@@ -90,7 +90,46 @@ element peek(QueueType* q)
 	return q->data[(q->front + 1) % MAX_QUEUE_SIZE];
 }
 
-int main2(void)
+/* 연습문제 8번 */
+int get_count(QueueType* q)
+{
+	if (is_empty(q)) return 0;
+
+	int front = q->front;
+	int rear = q->rear;
+
+	if (front < rear) {
+		return rear - front;
+	}
+	else {
+		return MAX_QUEUE_SIZE - (front - rear);
+	}
+}
+
+/* 연습문제 10번 */
+int fibonacci(QueueType* q, int n) {
+	if (n == 0) return 0;
+	if (n == 1) return 1;
+
+	enqueue(q, 0);
+	enqueue(q, 1);
+
+	int result = 0;
+
+	for (int i = 2; i <= n; i++) {
+		int NminusOne = dequeue(q);
+		int NminusTwo = peek(q);
+
+		result = NminusOne + NminusTwo;
+
+		enqueue(q, NminusOne + NminusTwo);
+	}
+	
+	return q->data[q->rear];
+}
+
+
+int main3(void)
 {
 	QueueType q;
 	int element;
@@ -111,6 +150,8 @@ int main2(void)
 		}
 		queue_print(&q);
 	}
+
+
 
 
 	return 0;
