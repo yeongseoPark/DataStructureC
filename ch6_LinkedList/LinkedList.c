@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 typedef int element;
 typedef struct ListNode {
@@ -121,6 +122,45 @@ ListNode* reverse(ListNode* head)
 	return middle;
 }
 
+void certain_delete(ListNode* head, element val)
+{
+	ListNode* pre = head;
+	ListNode* cur = head;
+
+	if (cur->data == val) {
+		head = head->link;
+		return;
+	}
+
+	cur = cur->link;
+	while (cur->data != val) {
+		pre = pre->link;
+		cur = cur->link;
+	}
+
+	pre->link = cur->link;
+	return;
+}
+
+element* find_maxmin(ListNode* head) {
+	static element minMax[2] = {INT_MAX,INT_MIN};
+
+	ListNode* p = head;
+
+	while (p != NULL) {
+		if (minMax[0] > p->data) minMax[0] = p->data;
+
+		if (minMax[1] < p->data) minMax[1] = p->data;
+
+		p = p->link;
+	}
+
+	return minMax;
+}
+
+
+
+
 int main(void)
 {
 	ListNode* head = NULL;
@@ -142,6 +182,12 @@ int main(void)
 	ListNode* reversed = NULL;
 	reversed = reverse(head);
 	print_list(reversed);
+
+	certain_delete(reversed, 2);
+	print_list(reversed);
+
+	int* p = find_maxmin(reversed);
+	printf("min : %d , max : %d\n", *(p +0), *(p+1));
 
 	return 0;
 }
