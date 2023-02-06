@@ -21,5 +21,11 @@
     <ClCompile Include="poly_add.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sorted_list_array.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sorted_list_LinkedList.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

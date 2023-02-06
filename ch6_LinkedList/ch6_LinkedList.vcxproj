@@ -129,6 +129,8 @@
   <ItemGroup>
     <ClCompile Include="LinkedList.c" />
     <ClCompile Include="poly_add.c" />
+    <ClCompile Include="sorted_list_array.c" />
+    <ClCompile Include="sorted_list_LinkedList.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

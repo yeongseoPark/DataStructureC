@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 typedef struct ListNode {
 	int coef;
@@ -89,8 +90,22 @@ void poly_print(ListType* plist)
 	printf("\n");
 }
 
+int poly_eval(ListType* head, int x)
+{
+	ListNode* p = head->head;
 
-int main2(void)
+	int res = 0;
+
+	while (p != NULL) {
+		res += pow(x, p->expon) * p->coef;
+		p = p->link;
+	}
+
+	return res;
+}
+
+
+int main3(void)
 {
 	ListType* list1, * list2, * list3;
 
@@ -102,17 +117,7 @@ int main2(void)
 	insert_last(list1, 2, 8);
 	insert_last(list1, 1, 0);
 
-	insert_last(list2, 8, 12);
-	insert_last(list2, -3, 10);
-	insert_last(list2, 10, 6);
-
 	poly_print(list1);
-	poly_print(list2);
 
-	poly_add(list1, list2, list3);
-	poly_print(list3);
-
-	free(list1);
-	free(list2);
-	free(list3);
+	printf("%d\n", poly_eval(list1, 3));
 }

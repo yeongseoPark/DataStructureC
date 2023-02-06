@@ -158,36 +158,173 @@ element* find_maxmin(ListNode* head) {
 	return minMax;
 }
 
+ListNode* delete_odd(ListNode* head) { // 홀수 노드만 삭ㅈ[
+	int i = 1;
+	ListNode* front = head;
+	ListNode* back = front;
+	front = front->link;
+	back = back->link;
+	ListNode* ans = back;
+
+	while (front != NULL) {
+		if (i % 2 == 0) {
+			back->link = front->link;
+			back = back->link;
+		}
+		i++;
+		front = front->link;
+	}
+
+	return ans;
+}
+
+ListNode* alternate(ListNode* first, ListNode* second)
+{
+	ListNode* a = first;
+	ListNode* b = second;
+	ListNode* c = a;
+	a = a->link; // 없으면 c가 자신을 무한참조
+	ListNode* ans = c;
+
+	int i = 1;
+
+	while (a != NULL && b != NULL) 
+	{
+		if (i % 2 == 0) {
+			c->link = a;
+			a = a->link;
+			c = c->link;
+		}
+		else {
+			c->link = b;
+			b = b->link;
+			c = c->link;
+		}
+
+		i++;
+	}
+
+	if (a != NULL) {
+		c->link = a;
+	}
+
+	if (b != NULL) {
+		c->link = b;
+	}
+
+	return ans;
+}
+
+ListNode* merge(ListNode* first, ListNode* second) // 오름차순 정렬상태 유지하며 합병
+{
+	ListNode* a = first;
+	ListNode* b = second;
+	ListNode* c;
+
+	if (a->data > b->data) {
+		c = b;
+		b = b->link;
+	}
+	else {
+		c = a;
+		a = a->link;
+	}
+
+	ListNode* ans = c;
+
+	while (a != NULL && b != NULL) 
+	{
+		if (a->data > b->data) {
+			c->link = b;
+			c = c->link;
+			b = b->link;
+		}
+		else {
+			c->link = a;
+			c = c->link;
+			a = a->link;
+		}
+	}
+
+	if (a != NULL) {
+		c->link = a;
+	}
+
+	if (b != NULL) {
+		c->link = b;
+	}
+
+	return ans;
+}
+
+void insert_node_back(ListNode** phead, ListNode* new_node) {
+	if (*phead == NULL) {
+		new_node->link = NULL;
+		*phead = new_node;
+	}
+	else {
+		new_node->link = NULL;
+		ListNode* p = *phead;
+		while (p->link != NULL)
+			p = p->link;
+		p->link = new_node;
+	}
+}
+
+ListNode* split(ListNode** ans1, ListNode** ans2, ListNode* node) 
+{
+	ListNode* goer = node;
+	*ans1 = NULL;
+	*ans2 = NULL;
+
+	int i = 1;
+
+	while (goer != NULL)
+	{
+		ListNode* tmp = (ListNode*)malloc(sizeof(ListNode));
+		tmp->data = goer->data;
+		tmp->link = NULL;
+
+		if (i % 2 == 1) {
+			insert_node_back(ans1, tmp);
+		}
+		else {
+			insert_node_back(ans2, tmp);
+		}
+
+		goer = goer->link;
+		i++;
+	}
+}
 
 
-
-int main(void)
+int main2(void)
 {
 	ListNode* head = NULL;
 	ListNode* head2 = NULL;
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 9; i >= 0; i--)
 	{
-		head = insert_first(head, i);
+		if (i % 2 == 0) 
+			head = insert_first(head, i);
 	}
 
-	for (int i = 5; i < 10; i++)
+	for (int i = 9; i >= 5; i--)
 	{
 		head2 = insert_first(head2, i);
 	}
 
-	concat(head, head2);
 	print_list(head);
-	
-	ListNode* reversed = NULL;
-	reversed = reverse(head);
-	print_list(reversed);
+	print_list(head2);
 
-	certain_delete(reversed, 2);
-	print_list(reversed);
+	ListNode* c = merge(head, head2);
+	print_list(c);
 
-	int* p = find_maxmin(reversed);
-	printf("min : %d , max : %d\n", *(p +0), *(p+1));
+	ListNode* a, *b;
+	split(&a, &b, c);
+	print_list(a);
+	print_list(b);
 
 	return 0;
 }
+
