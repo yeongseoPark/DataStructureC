@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <memory.h>
+#include <stdbool.h>
+#include <limits.h>
 
 typedef struct TreeNode {
 	int data;
@@ -158,15 +160,74 @@ int get_height(TreeNode* root)
 	}
 }
 
+bool is_balanced(TreeNode* root)
+{
+	if (root == NULL) return true;
+	int left = get_height(root->left);
+	int right = get_height(root->right);
+
+	return (left - right <= 1 && left - right >= -1) && is_balanced(root->left) && is_balanced(root->right);
+}
+
+int sum_BinaryTree(TreeNode* root)
+{
+	if (root == NULL) return 0;
+
+	int sum = root->data;
+
+	return sum + sum_BinaryTree(root->left) + sum_BinaryTree(root->right);
+}
+
+void print_smaller(TreeNode* root, int val)
+{
+	if (root == NULL) return;
+
+	if (root->data < val) printf("%d보다 작은 노드 : %d\n", val, root->data);
+
+	print_smaller(root->left, val);
+	print_smaller(root->right, val);
+}
+
+int return_onechild(TreeNode* root)
+{	
+	if (root == NULL) return 0;
+
+	if ((root->left && !root->right) || (root->right && !root->left)) {
+		return  1 + return_onechild(root->left) + return_onechild(root->right);
+	}
+	else {
+		return 0 + return_onechild(root->left) + return_onechild(root->right);
+	}
+}
+
+
+int find_max(TreeNode* root)
+{
+	if (root == NULL) return INT_MIN;
+	if (root->left == NULL && root->right == NULL) return root->data;
+
+
+	return max(find_max(root->left), find_max(root->right));
+}
+
+int find_min(TreeNode* root)
+{
+	if (root == NULL) return INT_MAX;
+	if (root->left == NULL && root->right == NULL) return root->data;
+
+
+	return min(find_min(root->left), find_min(root->right));
+}
+
 int main(void)
 {
 	printf("중위 = ");
 	inorder_iter(root);
 	printf("\n");
 
-	printf("%d\n", get_node_count(root));
-	printf("%d\n", get_leaf_count(root));
-	printf("%d\n", get_height(root));
+	
+	printf("%d\n", find_max(root));
+	printf("%d\n", find_min(root));
 
 
 	return 0;
