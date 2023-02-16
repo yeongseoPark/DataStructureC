@@ -126,15 +126,15 @@ int main(void)
 		switch (command) {
 			case 'i':
 				printf("단어 :");
-				gets_s(e.word, MAX_WORD_SIZE);
+				fgets(e.word, MAX_WORD_SIZE, stdin);
 				printf("의미 :");
-				gets_s(e.meaning, MAX_MEANING_SIZE);
+				fgets(e.meaning, MAX_MEANING_SIZE, stdin);
 				root = insert_node(root, e);
 				break;
 		
 			case 'd':
 				printf("단어 :");
-				gets_s(e.word, MAX_WORD_SIZE);
+				fgets(e.word, MAX_WORD_SIZE, stdin);
 				root = delete_node(root, e);
 				break;
 			case 'p':
@@ -143,7 +143,7 @@ int main(void)
 				break;
 			case 's':
 				printf("단어");
-				gets_s(e.word, MAX_WORD_SIZE);
+				fgets(e.word, MAX_WORD_SIZE, stdin);
 				tmp = search(root, e);
 				if (tmp != NULL)
 					printf("의미 :%s\n", e.meaning);
